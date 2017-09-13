@@ -1,0 +1,32 @@
+{
+  "name": "muse_vr_levitation",
+  "description": "connect muse headset to levitate in web VR",
+  "version": "0.0.0",
+  "scripts": {
+    "start": "budo app.js --live --verbose --port 3000 --open",
+    "deploy": "ghpages",
+    "ghpages": "ghpages"
+  },
+  "devDependencies": {
+    "budo": "^7.0.0",
+    "ghpages": "0.0.3",
+    "nodemon": "^1.11.0"
+  },
+  "keywords": [
+    "muse",
+    "eeg",
+    "levitation",
+    "osc",
+    "aframe",
+    "aframe-example",
+    "aframe-boilerplate",
+    "aframe-scene",
+    "webvr",
+    "vr"
+  ],
+  "dependencies": {
+    "express": "^4.15.4",
+    "osc": "^2.2.0",
+    "osc-min": "^1.1.1"
+  }
+}

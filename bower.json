@@ -1,0 +1,7 @@
+{
+  "name": "lazerGlazer_Viz",
+  "version": "0.0.0",
+  "dependencies": {
+    "osc-min": "1.1.1"
+  }
+}
