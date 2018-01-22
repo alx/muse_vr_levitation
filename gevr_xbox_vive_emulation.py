@@ -3,16 +3,18 @@ global pressed
 
 import socket
 
-UDP_IP = "0.0.0.0"
-UDP_PORT = 5010
+UDP_IP = ""
+UDP_PORT = 9999
 
-s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-s.bind((UDP_IP, UDP_PORT))
-
-while True:
-	data, addr = s.recvfrom(1024)
-	print "received message:", data
+def check_socket():
+	global sock
+	data = 0
+	try:
+		data, addr = sock.recvfrom(1024)
+	except Exception as e:
+		print "debug"
+	else:
+		diagnostics.debug(data)
 
 eps = 38/180.0*pi
 
@@ -280,10 +282,15 @@ def vive_init():
 global s
 
 if starting:
+	sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+	sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+	sock.setblocking(0)
+	sock.bind((UDP_IP, UDP_PORT))
 	pressed = 0
 	vive_init()
 	s = 1
 	hydra_init()
 
 if s == 1:
+	check_socket()
 	vive_controller()
